@@ -50,16 +50,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        //wallet recycler view
-        RecyclerView walletListRV = findViewById(R.id.wallet_list);
 
-        List<Wallet> walletList = new ArrayList<Wallet>();
-        walletList.add(new Wallet("Lương", 8000000, R.drawable.wallet_icon));
-        walletList.add(new Wallet("Bố mẹ chu cấp", 2000000, R.drawable.wallet_icon));
-        walletList.add(new Wallet("Học bổng", 10000000, R.drawable.wallet_icon));
-
-        walletListRV.setLayoutManager(new LinearLayoutManager(this));
-        walletListRV.setAdapter(new WalletListAdapter(getApplicationContext(), walletList));
 
     }
 }

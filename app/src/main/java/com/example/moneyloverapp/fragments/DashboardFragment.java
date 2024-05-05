@@ -3,12 +3,19 @@ package com.example.moneyloverapp.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.moneyloverapp.R;
+import com.example.moneyloverapp.models.Wallet;
+import com.example.moneyloverapp.recycleViews.WalletList.WalletListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +67,20 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        //wallet recycler view
+        RecyclerView walletListRV = view.findViewById(R.id.wallet_list);
+
+        List<Wallet> walletList = new ArrayList<Wallet>();
+        walletList.add(new Wallet("Lương", 8000000, R.drawable.wallet_icon));
+        walletList.add(new Wallet("Bố mẹ chu cấp", 2000000, R.drawable.wallet_icon));
+        walletList.add(new Wallet("Học bổng", 10000000, R.drawable.wallet_icon));
+
+        walletListRV.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        walletListRV.setAdapter(new WalletListAdapter(view.getContext(), walletList));
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        return view;
     }
 }
